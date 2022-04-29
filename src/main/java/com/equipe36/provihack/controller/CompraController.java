@@ -45,8 +45,7 @@ public class CompraController {
 		newCompra.setValor(compra.getValor());
 		newCompra.setParceiro(parceiro);
 		newCompra.setUsuario(usuario);
-		return ResponseEntity.ok(compraRepository.saveAndFlush(newCompra));
-		
+		return ResponseEntity.ok(compraRepository.saveAndFlush(newCompra));		
 	}
 	
 	@GetMapping("cashback/total")

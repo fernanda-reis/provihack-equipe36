@@ -9,16 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompraDTO {
-	
+public class DoacaoDTO {
+
 	private float valor;
-	
-	private int cashback;
 	
 	private Date data;
 	
 	private Long idUsuario;
 	
-	private Long idParceiro;
+	private Long idOng;
 	
 }

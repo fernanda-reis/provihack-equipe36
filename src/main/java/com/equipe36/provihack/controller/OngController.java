@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.equipe36.provihack.model.Ong;
-import com.equipe36.provihack.model.Parceiro;
 import com.equipe36.provihack.repository.OngRepository;
 
 @RestController
@@ -28,7 +27,7 @@ public class OngController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Ong> GetParceiroById(@PathVariable Long id) {
+	public ResponseEntity<Ong> GetOngById(@PathVariable Long id) {
 		return ongRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
