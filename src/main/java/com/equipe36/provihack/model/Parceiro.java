@@ -38,13 +38,7 @@ public class Parceiro {
 	private String logo;
 	
 	@NotNull
-	private int cashback;
-	
-	@NotNull
-	private boolean carbonoNeutro;
-	
-	@NotNull
-	private boolean tipo;
+	private float cashback;
 	
 	@OneToMany(mappedBy = "parceiro", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("parceiro")

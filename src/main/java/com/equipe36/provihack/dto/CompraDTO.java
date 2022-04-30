@@ -13,7 +13,7 @@ public class CompraDTO {
 	
 	private float valor;
 	
-	private int cashback;
+	private float cashback;
 	
 	private Date data;
 	

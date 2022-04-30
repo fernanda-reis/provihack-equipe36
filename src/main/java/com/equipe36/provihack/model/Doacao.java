@@ -29,7 +29,7 @@ public class Doacao {
 	private Long id;
 	
 	@NotNull
-	private float valor;
+	private float valorDoado;
 	private Date data;
 	
 	@ManyToOne

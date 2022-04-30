@@ -29,10 +29,10 @@ public class Compra {
 	private Long id;
 	
 	@NotNull
-	private float valor;
+	private float valorCompra;
 	
-	@NotNull
-	private int cashback;
+
+	private float valorCashback;
 	
 	private Date data;
 	

@@ -9,7 +9,7 @@ import com.equipe36.provihack.model.Compra;
 @Repository
 public interface CompraRepository extends JpaRepository<Compra, Long> {
 	
-	@Query("SELECT SUM(c.cashback) FROM Compra c")
+	@Query("SELECT SUM(c.valorCashback) FROM Compra c")
 	Float sumCashBacks();
 
 }

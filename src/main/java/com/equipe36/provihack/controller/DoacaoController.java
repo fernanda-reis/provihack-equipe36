@@ -1,5 +1,6 @@
 package com.equipe36.provihack.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +37,18 @@ public class DoacaoController {
 	@PostMapping("novo")
 	public ResponseEntity<Doacao> NewDoacao(@RequestBody DoacaoDTO doacao){
 		Ong ong = new Ong();
-		ong = ongRepository.findById(ong.getId()).get();
+		ong = ongRepository.findById(doacao.getIdOng()).get();
 		
 		Usuario usuario = new Usuario();
 		usuario = usuarioRepository.findById(doacao.getIdUsuario()).get();
 		usuario.setTotalCashback(0);
+		
 		Doacao newDoacao = new Doacao();
-		newDoacao.setData(doacao.getData());
-		newDoacao.setValor(doacao.getValor());
+		newDoacao.setData(new Date());
+		newDoacao.setValorDoado(doacao.getValor());
 		newDoacao.setOng(ong);
 		newDoacao.setUsuario(usuario);
+		
 		return ResponseEntity.ok(doacaoRepository.saveAndFlush(newDoacao));		
 	}
 

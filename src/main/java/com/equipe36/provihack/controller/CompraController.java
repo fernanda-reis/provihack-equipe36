@@ -1,5 +1,7 @@
 package com.equipe36.provihack.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,13 +40,19 @@ public class CompraController {
 		
 		Usuario usuario = new Usuario();
 		usuario = usuarioRepository.findById(compra.getIdUsuario()).get();
-		
+
 		Compra newCompra = new Compra();
-		newCompra.setCashback(compra.getCashback());
-		newCompra.setData(compra.getData());
-		newCompra.setValor(compra.getValor());
 		newCompra.setParceiro(parceiro);
 		newCompra.setUsuario(usuario);
+		newCompra.setData(new Date());
+		newCompra.setValorCompra(compra.getValor());
+		
+		float cashbackCompra = (parceiro.getCashback() / 100) * compra.getValor();
+		newCompra.setValorCashback(cashbackCompra);
+
+		float cashbackUsuario = usuario.getTotalCashback() + cashbackCompra;
+		usuario.setTotalCashback(cashbackUsuario);
+		
 		return ResponseEntity.ok(compraRepository.saveAndFlush(newCompra));		
 	}
 	

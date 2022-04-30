@@ -40,6 +40,12 @@ public class UsuarioController {
 				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());	
 	}
 	
+	@GetMapping("id/{id}")
+	public ResponseEntity<Usuario> GetByCpf(@PathVariable Long id){
+		return repository.findById(id)
+				.map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());	
+	}
+	
 	
 	/**
 	 * exemplo json:
