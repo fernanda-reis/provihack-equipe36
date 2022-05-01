@@ -41,11 +41,11 @@ public class DoacaoController {
 		
 		Usuario usuario = new Usuario();
 		usuario = usuarioRepository.findById(doacao.getIdUsuario()).get();
-		usuario.setTotalCashback(0);
 		
 		Doacao newDoacao = new Doacao();
 		newDoacao.setData(new Date());
-		newDoacao.setValorDoado(doacao.getValor());
+		newDoacao.setValorDoado(usuario.getTotalCashback());
+		usuario.setTotalCashback(0);
 		newDoacao.setOng(ong);
 		newDoacao.setUsuario(usuario);
 		
