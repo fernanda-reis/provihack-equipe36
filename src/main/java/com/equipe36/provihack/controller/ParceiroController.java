@@ -3,6 +3,7 @@ package com.equipe36.provihack.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +33,14 @@ public class ParceiroController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
+	@GetMapping("/categoria/{categoria}")
+	public ResponseEntity<List<Parceiro>> findAllByCategoria(@PathVariable String categoria) {
+		 List<Parceiro> list = parceiroRepository.findAllByCategoriaIgnoreCase(categoria);
+		  if(list.isEmpty()) {
+			  return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		  } else {
+			  return ResponseEntity.status(HttpStatus.OK).body(list);
+		  }
+	}
+	
 }

@@ -40,6 +40,8 @@ public class Parceiro {
 	@NotNull
 	private float cashback;
 	
+	private String categoria;
+	
 	@OneToMany(mappedBy = "parceiro", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("parceiro")
 	private List<Compra> compras;

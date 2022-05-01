@@ -1,8 +1,10 @@
 package com.equipe36.provihack.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,5 +62,15 @@ public class CompraController {
 	@GetMapping("cashback/total")
 	public ResponseEntity<Float> cashbackTotal(){
 		return ResponseEntity.ok(compraRepository.sumCashBacks());
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Compra>> getAllOrderByData(){
+		List<Compra> list = compraRepository.findAllByOrderByDataDesc();
+		if (list.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(list);
+		}
 	}
 }
