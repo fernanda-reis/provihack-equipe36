@@ -46,6 +46,7 @@ public class CompraController {
 		newCompra.setUsuario(usuario);
 		newCompra.setData(new Date());
 		newCompra.setValorCompra(compra.getValor());
+		newCompra.setStatus("Em processamento");
 		
 		float cashbackCompra = (parceiro.getCashback() / 100) * compra.getValor();
 		newCompra.setValorCashback(cashbackCompra);

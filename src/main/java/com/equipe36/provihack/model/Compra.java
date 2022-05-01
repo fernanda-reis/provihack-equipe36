@@ -36,6 +36,8 @@ public class Compra {
 	
 	private Date data;
 	
+	private String status;
+	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	@JsonIgnoreProperties("compras")
